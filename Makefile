@@ -1,5 +1,7 @@
 clean:
-	rm -rf dist/*
+	rm -rf dist
+	rm -rf build
+	rm -rf *.egg*
 	find . -type d -name __pycache__ \
 		-o \( -type f -name '*.py[cod]' \) -print0 \
 		| xargs -0 rm -rf
