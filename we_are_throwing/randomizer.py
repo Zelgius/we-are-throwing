@@ -7,13 +7,14 @@ import random
 randomizer = Blueprint('randomizer', __name__)
 
 
-@randomizer.route('/random-team')
+@randomizer.route('/overwatch/random-team')
 def random_team():
     heroes = copy.deepcopy(OW_HEROES)
     shuffle(heroes)
-    players = request.args.get('players', None).split(',')
+    players = request.args.get('players', None)
     if players is None:
         return "No players specified", 200
+    players = players.split(',')
     if len(players) > 6:
         return "Team cannot contain more than 6 players, nerd"
     results = {}
@@ -23,7 +24,7 @@ def random_team():
     return jsonify(results)
 
 
-@randomizer.route('/individual')
+@randomizer.route('/overwatch/individual')
 def random_hero():
     results = {}
     heroes = copy.deepcopy(OW_HEROES)
