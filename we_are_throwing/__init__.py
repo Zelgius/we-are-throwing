@@ -1,7 +1,7 @@
 import os
 
 from flask import Flask
-from we_are_throwing.randomizer import randomizer
+from we_are_throwing.overwatch import overwatch
 
 
 def create_app(test_config=None):
@@ -11,7 +11,7 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
     )
 
-    app.register_blueprint(randomizer)
+    app.register_blueprint(overwatch)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
